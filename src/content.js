@@ -3,7 +3,7 @@ export const hero = {
   title: 'Je conçois des expériences numériques belles et utiles',
   intro:
     "Je suis Luc Konou, développeur Full Stack polyvalent. J'imagine et réalise des applications web, mobiles et desktop qui allient design, performance et impact.",
-  image: '/images/Luc-Photoroom.png',
+  image: '/images/luc.jpg',
   imageAlt: 'Portrait de Luc Konou',
   actions: [
     {
@@ -13,14 +13,14 @@ export const hero = {
     },
     {
       label: 'Télécharger mon CV',
-      href: '/assets/KONOU.pdf',
+      href: '/assets/CV-KONOU.pdf',
       variant: 'ghost',
       download: true,
     },
   ],
   highlights: [
-    { label: 'Projets réalisés', value: '35+' },
-    { label: 'Technos maîtrisées', value: '12' },
+    { label: 'Projets réalisés', value: '15+' },
+    { label: 'Technos maîtrisées', value: '5' },
     { label: 'Satisfaction clients', value: '98%' },
   ],
 }
@@ -112,7 +112,16 @@ export const projects = [
       'Application de monitoring énergétique : relevés, factures, tableau de bord et rôles utilisateurs.',
     image: '/images/ecopower-frame.jpg',
     imageAlt: 'Application mobile Ecopower avec graphiques de consommation',
-    link: '#',
+    link: 'https://play.google.com/store/apps/details?id=tg.konou.ecopower',
+  },
+  {
+    title: 'Loban — Transport et livraison',
+    category: 'App Mobile',
+    description:
+      'Application de transport et livraison : gestion de colis, déménagements, comparaison d\'offres et suivi en temps réel. Collaboration au développement.',
+    image: '/images/loban.webp',
+    imageAlt: 'Application mobile Loban pour le transport et la livraison',
+    link: 'https://play.google.com/store/apps/details?id=com.najahscore.loaban',
   },
   {
     title: 'Restaurant Universitaire de Lomé',

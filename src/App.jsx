@@ -120,8 +120,8 @@ function App() {
                 <p>Stack moderne maîtrisée</p>
               </div>
               <div className="note-card">
-                <span>Projet Maplénou</span>
-                <p>Application de livraison locale</p>
+                <span>Projet Ecopower</span>
+                <p>Application de gestion de consommation électrique</p>
               </div>
             </div>
           </div>
