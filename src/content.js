@@ -20,7 +20,7 @@ export const hero = {
   ],
   highlights: [
     { label: 'Projets réalisés', value: '15+' },
-    { label: 'Technos maîtrisées', value: '5' },
+    { label: 'Technos maîtrisées', value: '5+' },
     { label: 'Satisfaction clients', value: '98%' },
   ],
 }
@@ -267,7 +267,7 @@ export const contact = {
   location: 'Zanguéra, Lomé - Togo',
   phone: '+228 97 24 04 60',
   email: 'konouluc0@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/luc-konou',
+  linkedin: 'https://www.linkedin.com/in/luc-komla-konou-23957833a/',
 }
 
 export const navLinks = [
