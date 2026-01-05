@@ -112,7 +112,7 @@ export const projects = [
       'Application de monitoring énergétique : relevés, factures, tableau de bord et rôles utilisateurs.',
     image: '/images/ecopower-frame.jpg',
     imageAlt: 'Application mobile Ecopower avec graphiques de consommation',
-    link: 'https://play.google.com/store/apps/details?id=tg.konou.ecopower',
+    link: 'https://www.ecopowers.online/',
   },
   {
     title: 'Loban — Transport et livraison',
