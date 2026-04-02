@@ -13,7 +13,7 @@ import {
   navLinks,
 } from './content'
 
-const projectFilters = ['Tous', 'Web', 'App Mobile', 'App Desktop']
+const projectFilters = ['Tous', 'Web', 'App Mobile', 'Projet Scolaire']
 
 const SectionHeading = ({ eyebrow, title, description }) => (
   <header className="section-heading">
@@ -23,21 +23,75 @@ const SectionHeading = ({ eyebrow, title, description }) => (
   </header>
 )
 
+const Popup = ({ status, onClose }) => {
+  if (status === 'idle' || status === 'loading') return null;
+
+  return (
+    <div className="popup-overlay" onClick={onClose}>
+      <div className="popup-content" onClick={e => e.stopPropagation()}>
+        <div className={`popup-icon ${status}`}>
+          {status === 'success' ? '✓' : '!'}
+        </div>
+        <h3>{status === 'success' ? 'Message envoyé !' : 'Oups...'}</h3>
+        <p>
+          {status === 'success' 
+            ? "Merci pour votre message. Je vous répondrai dans les plus brefs délais."
+            : "Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement par email."}
+        </p>
+        <button className="button primary" onClick={onClose}>
+          {status === 'success' ? 'Super !' : 'Fermer'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [activeFilter, setActiveFilter] = useState('Tous')
   const [openFaqIndex, setOpenFaqIndex] = useState(0)
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const [heroImageAvailable, setHeroImageAvailable] = useState(Boolean(hero.image))
+  const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
 
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === 'Tous') {
-      return projects
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setFormStatus('loading')
+
+    const formData = new FormData(e.target)
+    try {
+      const response = await fetch(e.target.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        e.target.reset()
+        // Reset success message after 5 seconds
+        setTimeout(() => setFormStatus('idle'), 5000)
+      } else {
+        setFormStatus('error')
+      }
+    } catch (error) {
+      setFormStatus('error')
     }
-    return projects.filter((project) => project.category === activeFilter)
+  }
+
+  const featuredProjects = useMemo(() => projects.filter(p => p.featured), [])
+  
+  const otherProjects = useMemo(() => {
+    let filtered = projects.filter(p => !p.featured)
+    if (activeFilter !== 'Tous') {
+      filtered = filtered.filter((project) => project.category === activeFilter)
+    }
+    return filtered
   }, [activeFilter])
 
   return (
     <div className="app-shell">
+      <Popup status={formStatus} onClose={() => setFormStatus('idle')} />
       <nav className="top-nav">
         <div className="nav-brand">LuCodes</div>
         <button
@@ -73,57 +127,35 @@ function App() {
             <h1>{hero.title}</h1>
             <p>{hero.intro}</p>
             <div className="hero-actions">
-              {hero.actions.map((action) => {
-                const downloadAttr =
-                  action.download === undefined
-                    ? {}
-                    : { download: action.download === true ? undefined : action.download }
-                return (
-                  <a
-                    key={action.label}
-                    href={action.href}
-                    className={`button ${action.variant}`}
-                    {...downloadAttr}
-                  >
-                    {action.label}
-                  </a>
-                )
-              })}
+              {hero.actions.map((action) => (
+                <a
+                  key={action.label}
+                  href={action.href}
+                  className={`button ${action.variant}`}
+                  download={action.download}
+                >
+                  {action.label}
+                </a>
+              ))}
             </div>
             <div className="hero-stats">
               {hero.highlights.map((item) => (
                 <div key={item.label} className="stat-card">
-                  <span className="stat-value">{item.value}</span>
                   <span className="stat-label">{item.label}</span>
+                  <span className="stat-value">{item.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="hero-visual">
             <div className="hero-glow" aria-hidden />
-            {(hero.image || !heroImageAvailable) && (
-              <figure className="hero-portrait">
-                {hero.image && heroImageAvailable && (
-                  <img
-                    src={hero.image}
-                    alt={hero.imageAlt}
-                    onError={() => setHeroImageAvailable(false)}
-                    loading="lazy"
-                  />
-                )}
-                {!heroImageAvailable && <div className="hero-placeholder">Luc Konou</div>}
-              </figure>
-            )}
-            <div className="hero-notes" aria-hidden>
-              <div className="note-card">
-                <span>+12 technologies</span>
-                <p>Stack moderne maîtrisée</p>
-              </div>
-              <div className="note-card">
-                <span>Projet Ecopower</span>
-                <p>Application de gestion de consommation électrique</p>
-              </div>
-            </div>
+            <figure className="hero-portrait">
+              <img
+                src={hero.image}
+                alt={hero.imageAlt}
+                loading="eager"
+              />
+            </figure>
           </div>
         </section>
 
@@ -203,50 +235,78 @@ function App() {
                 </div>
               </div>
             ))}
-      </div>
+          </div>
         </section>
 
         <section id="projects" className="projects">
           <SectionHeading
             eyebrow="Portfolio"
             title="Mes réalisations"
-            description="Un aperçu des projets web, mobiles et desktop livrés ces dernières années."
+            description="Une sélection de mes meilleurs projets et travaux académiques."
           />
-          <div className="project-filters">
-            {projectFilters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className={filter === activeFilter ? 'active' : ''}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-        </button>
-            ))}
+          
+          <div className="featured-projects">
+            <h3 className="projects-subtitle">Projets Phares</h3>
+            <div className="project-grid featured">
+              {featuredProjects.map((project) => (
+                <article key={project.title} className="project-card featured">
+                  <div className="project-preview">
+                    {project.image && (
+                      <figure className="project-media">
+                        <img src={project.image} alt={project.imageAlt ?? project.title} loading="lazy" />
+                      </figure>
+                    )}
+                    <div className="project-badge">{project.category}</div>
+                  </div>
+                  <div className="project-content">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    {project.link && project.link !== '#' && (
+                      <a href={project.link} target="_blank" rel="noreferrer">
+                        Voir le projet
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="project-grid">
-            {filteredProjects.map((project) => (
-              <article key={project.title} className="project-card">
-                <div className="project-preview">
-                  {project.image && (
-                    <figure className="project-media">
-                      <img src={project.image} alt={project.imageAlt ?? project.title} loading="lazy" />
-                    </figure>
-                  )}
-                  <div className="project-overlay" />
-                  <div className="project-badge">{project.category}</div>
-                </div>
-                <div className="project-content">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  {project.link && (
-                    <a href={project.link} target="_blank" rel="noreferrer">
-                      Voir le projet
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
+
+          <div className="other-projects">
+            <div className="projects-header-flex">
+              <h3 className="projects-subtitle">Plus de projets</h3>
+              <div className="project-filters">
+                {projectFilters.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    className={filter === activeFilter ? 'active' : ''}
+                    onClick={() => setActiveFilter(filter)}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div className="project-grid compact">
+              {otherProjects.map((project) => (
+                <article key={project.title} className="project-card compact">
+                  <div className="project-content">
+                    <div className="project-header-compact">
+                      <span className="project-badge-compact">{project.category}</span>
+                      <h3>{project.title}</h3>
+                    </div>
+                    <p>{project.description}</p>
+                    {project.link && project.link !== '#' && (
+                      <a href={project.link} target="_blank" rel="noreferrer">
+                        Lien
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -255,7 +315,7 @@ function App() {
             eyebrow="Témoignages"
             title="Ce que disent mes mentors et collaborateurs"
           />
-          <div className="testimonial-grid">
+          <div className="testimonials-grid">
             {testimonials.map((testimonial) => (
               <article key={testimonial.name} className="testimonial-card">
                 <p>“{testimonial.quote}”</p>
@@ -330,8 +390,9 @@ function App() {
 
             <form
               className="contact-form"
-              action="https://formsubmit.co/konouluc0@gmail.com"
+              action="https://formsubmit.co/ajax/konouluc0@gmail.com"
               method="POST"
+              onSubmit={handleFormSubmit}
             >
               <input type="hidden" name="_captcha" value="false" />
               <div className="form-row">
@@ -356,17 +417,22 @@ function App() {
                   required
                 />
               </div>
-              <button type="submit" className="button primary">
-                Envoyer le message
+              <button 
+                type="submit" 
+                className={`button primary ${formStatus === 'loading' ? 'loading' : ''}`}
+                disabled={formStatus === 'loading'}
+              >
+                {formStatus === 'loading' ? 'Envoi en cours...' : 'Envoyer le message'}
               </button>
             </form>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Luc Konou — Tous droits réservés.</p>
-        <a href="mailto:konouluc0@gmail.com">konouluc0@gmail.com</a>
+      <footer className="app-footer">
+        <div className="footer-content">
+          <p>© {new Date().getFullYear()} Luc Konou — Tous droits réservés.</p>
+        </div>
       </footer>
     </div>
   )

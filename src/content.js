@@ -1,41 +1,40 @@
 export const hero = {
-  eyebrow: 'Développeur Web & Mobile',
-  title: 'Je conçois des expériences numériques belles et utiles',
+  eyebrow: 'Développeur Full Stack',
+  title: 'Architecture & Innovation Digitales',
   intro:
-    "Je suis Luc Konou, développeur Full Stack polyvalent. J'imagine et réalise des applications web, mobiles et desktop qui allient design, performance et impact.",
-  image: '/images/luc.jpg',
+    "Je suis Luc Konou. Je conçois des solutions techniques robustes et élégantes, de la conception mobile au déploiement backend, avec une approche pragmatique axée sur la performance.",
+  image: '/images/Luc.jpeg',
   imageAlt: 'Portrait de Luc Konou',
   actions: [
     {
-      label: 'Explorer mon travail',
+      label: 'Voir mes projets',
       href: '#projects',
       variant: 'primary',
     },
     {
-      label: 'Télécharger mon CV',
+      label: 'Mon CV',
       href: '/assets/CV-KONOU.pdf',
       variant: 'ghost',
       download: true,
     },
   ],
   highlights: [
-    { label: 'Projets réalisés', value: '15+' },
-    { label: 'Technos maîtrisées', value: '5+' },
-    { label: 'Satisfaction clients', value: '98%' },
+    { label: 'Projets déployés', value: '20+' },
+    { label: 'Technologies', value: '12+' },
+    { label: 'Expertise', value: 'Full Stack' },
   ],
 }
 
 export const about = {
-  title: 'Créer des solutions qui transforment le quotidien',
+  title: 'Une vision pragmatique du développement',
   text: [
-    "Étudiant passionné en développement d'applications, je combine créativité, rigueur et esprit d'équipe pour concevoir des solutions numériques modernes.",
-    "J'ai accompagné des cafétérias, des services de beauté, des plateformes de formation et je co-conçois l'application de livraison Maplénou.",
-    "Toujours en apprentissage, j'explore Flutter, Firebase, Laravel, Bootstrap et bien d'autres technologies pour créer un web accessible et humain.",
+    "Fort d'une expérience concrète dans le déploiement d'applications critiques comme Ecopower sur le Play Store, je transforme des problématiques complexes en interfaces intuitives et backends performants.",
+    "Mon approche repose sur l'efficacité technique et la clarté architecturale, en évitant le sur-ingénierie pour privilégier la maintenabilité et l'impact utilisateur.",
   ],
   points: [
-    'Approche centrée utilisateur et design systems modernes',
-    'Vision produit : du prototype au déploiement',
-    'Collaboration fluide avec équipes métiers et techniques',
+    'Architecture logicielle propre et scalable',
+    'Développement mobile-first & PWA',
+    'Expertise Backend (API REST, Sécurité JWT)',
   ],
 }
 
@@ -43,7 +42,7 @@ export const services = [
   {
     title: 'Applications Mobiles',
     description:
-      'Développement Flutter & Firebase : authentification sécurisée, notifications, analytics et expériences fluides.',
+      'Développement Flutter (iOS/Android) avec backends Node.js ou Firebase : authentification, temps réel et performances optimales.',
   },
   {
     title: 'Sites Web Modernes',
@@ -63,17 +62,18 @@ export const services = [
 ]
 
 export const skills = [
-  { name: 'Flutter & Firebase', value: 85 },
-  { name: 'HTML & CSS', value: 95 },
-  { name: 'JavaScript', value: 80 },
-  { name: 'PHP & MySQL', value: 70 },
-  { name: 'UI Design (Figma, Adobe)', value: 60 },
+  { name: 'Flutter (Mobile)', value: 95 },
+  { name: 'Node.js / Express / Prisma', value: 85 },
+  { name: 'React / Next.js', value: 85 },
+  { name: 'PostgreSQL / MySQL', value: 80 },
+  { name: 'Vue.js (PWA)', value: 80 },
+  { name: 'PHP / Laravel', value: 75 },
 ]
 
 export const differentiators = [
   {
-    title: 'Technologies maîtrisées',
-    content: 'Flutter, Firebase, React, Laravel, PHP/MySQL, Java, Git, Botpress, Tailwind, Bootstrap.',
+    title: 'Expertise Full-Stack',
+    content: 'Flutter, Node.js, Prisma, PostgreSQL, React/Next.js, Vue.js, Laravel, Spring Boot.',
   },
   {
     title: 'Expériences concrètes',
@@ -88,6 +88,67 @@ export const differentiators = [
 ]
 
 export const projects = [
+  {
+    title: 'Ecopower — Gestion Électrique Intelligente',
+    category: 'App Mobile (Play Store)',
+    description: 'Flutter · Node.js · Prisma · PostgreSQL — Solution complète de suivi de consommation, facturation automatique et notifications WhatsApp. Déployée pour propriétaires et résidents.',
+    image: '/images/ecopower-frame.jpg',
+    imageAlt: 'Application Ecopower on Google Play',
+    link: 'https://play.google.com/store/apps/details?id=tg.konou.ecopower',
+    featured: true,
+  },
+  {
+    title: 'Sheloa — Carnet de Vaccination',
+    category: 'PWA / Mobile-First',
+    description: 'Vue 3 · Vite 7 · Tailwind 4 — Plateforme de suivi vaccinal pour enfants avec authentification OTP, gestion des dossiers patients et rappels intelligents.',
+    image: '/images/vaccicarnet.webp',
+    imageAlt: 'Interface mobile de Sheloa',
+    link: 'https://sheloa.joinweheal.com/',
+    featured: true,
+  },
+  {
+    title: 'UCAO Academy — Gestion Académique',
+    category: 'Web',
+    description: 'Next.js · Node.js — Système complet pour l’UCAO-UUT : gestion des cours, emplois du temps, examens et espace de discussion interactif.',
+    image: '/images/ucao-academy.png',
+    imageAlt: 'Tableau de bord UCAO Academy',
+    link: 'https://ucao-academy.vercel.app/',
+    featured: true,
+  },
+  {
+    title: 'Loban — Transport et livraison',
+    category: 'App Mobile',
+    description:
+      'Application de transport et livraison : gestion de colis, déménagements, comparaison d\'offres et suivi en temps réel. Collaboration au développement.',
+    image: '/images/loban.webp',
+    imageAlt: 'Application mobile Loban pour le transport et la livraison',
+    link: 'https://play.google.com/store/apps/details?id=com.najahscore.loaban',
+    featured: true,
+  },
+  {
+    title: 'WeHeal — Système de Gestion de Santé',
+    category: 'Web',
+    description: 'Vue.js · API REST — Dashboard d’administration centralisé pour les centres médicaux : rapports, gestion des patients et suivi des vaccinations.',
+    image: '/images/frame.jpg', // Nouvelle illustration
+    imageAlt: 'Dashboard WeHeal pour centres de santé',
+    link: '#',
+  },
+  {
+    title: 'DigiTicket — Sécurité & Billetterie',
+    category: 'Backend / API',
+    description: 'Java · Spring Boot · PostgreSQL — API robuste pour la gestion de billetterie, incluant authentification JWT et architecture granulaire des rôles.',
+    image: '/images/tickets-app.jpg',
+    imageAlt: 'Architecture DigiTicket Backend',
+    link: 'https://github.com/luc-create/digiTicket.git',
+  },
+  {
+    title: 'Nye Dowola — Application de Services',
+    category: 'App Mobile',
+    description: 'Flutter — Application facilitant l’accès aux services de proximité et la gestion des notifications en temps réel pour une expérience utilisateur fluide.',
+    image: '/images/frame.jpg', // Suppression image Loban
+    imageAlt: 'Interface de Nye Dowola',
+    link: '#',
+  },
   {
     title: 'Application de Gestion de Tickets',
     category: 'App Mobile',
@@ -104,24 +165,6 @@ export const projects = [
     image: '/images/doctagne.png',
     imageAlt: 'Application mobile Doctagne pour la prise de rendez-vous médicaux',
     link: 'https://doctagne.com',
-  },
-  {
-    title: 'Ecopower — Suivi électrique collaboratif',
-    category: 'App Mobile',
-    description:
-      'Application de monitoring énergétique : relevés, factures, tableau de bord et rôles utilisateurs.',
-    image: '/images/ecopower-frame.jpg',
-    imageAlt: 'Application mobile Ecopower avec graphiques de consommation',
-    link: 'https://www.ecopowers.online/',
-  },
-  {
-    title: 'Loban — Transport et livraison',
-    category: 'App Mobile',
-    description:
-      'Application de transport et livraison : gestion de colis, déménagements, comparaison d\'offres et suivi en temps réel. Collaboration au développement.',
-    image: '/images/loban.webp',
-    imageAlt: 'Application mobile Loban pour le transport et la livraison',
-    link: 'https://play.google.com/store/apps/details?id=com.najahscore.loaban',
   },
   {
     title: 'Restaurant Universitaire de Lomé',
@@ -174,8 +217,8 @@ export const projects = [
   },
   {
     title: "Refonte du site UCAO-UUT",
-    category: 'Web',
-    description: 'WordPress — Architecture des pages, design responsive et intégration de contenus.',
+    category: 'Projet Scolaire',
+    description: 'WordPress — Architecture des pages, design responsive et intégration de contenus académiques.',
     image: '/images/ucao-uut.png',
     imageAlt: 'Page d’accueil du site UCAO-UUT',
     link: 'https://work.go.yj.fr/ucao-uut/',
@@ -190,7 +233,7 @@ export const projects = [
   },
   {
     title: 'App Desktop Quincaillerie',
-    category: 'App Desktop',
+    category: 'Projet Scolaire',
     description: 'Java · JDBC — Gestion des stocks et des utilisateurs pour points de vente.',
     image: '/images/hardware-desktop.png',
     imageAlt: 'Application desktop de suivi de stock quincaillerie',
@@ -198,7 +241,7 @@ export const projects = [
   },
   {
     title: 'App de Bibliothèque',
-    category: 'Web',
+    category: 'Projet Scolaire',
     description: 'Laravel — Gestion des emprunts, rôles et interface Blade moderne.',
     image: '/images/biblio.png',
     imageAlt: 'Interface web de gestion de bibliothèque',
