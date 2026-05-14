@@ -126,6 +126,34 @@ export const projects = [
     featured: true,
   },
   {
+    title: 'VoteGBDE — Plateforme de vote',
+    category: 'Backend / API',
+    description:
+      'Node.js · Express · Prisma · PostgreSQL — API de vote sécurisée (JWT, OTP e-mail, rate limiting), tests et documentation OpenAPI/Swagger. Déployée sur Vercel.',
+    image: '/images/frame.jpg',
+    imageAlt: 'API VoteGBDE — santé et documentation',
+    link: 'https://ucao-vote-bgde.vercel.app/',
+    featured: true,
+  },
+  {
+    title: 'Trouvtogo — API objets perdus & trouvés',
+    category: 'Backend / API',
+    description:
+      'Java 17 · Spring Boot · PostgreSQL — API REST pour signalements et gestion d’objets perdus/trouvés, sécurité JWT et documentation SpringDoc.',
+    image: '/images/frame.jpg',
+    imageAlt: 'Dépôt et architecture API Trouvtogo',
+    link: 'https://github.com/Konou0luc/trouvtogo-api',
+  },
+  {
+    title: 'Trouvtogo — Application web',
+    category: 'Web',
+    description:
+      'React 19 · Vite · Tailwind CSS · Framer Motion — Front-office pour la découverte et le signalement d’objets.',
+    image: '/images/trouvTogo-web.png',
+    imageAlt: 'Application web Trouvtogo',
+    link: 'https://trouv-togo-web.vercel.app/',
+  },
+  {
     title: 'WeHeal — Système de Gestion de Santé',
     category: 'Web',
     description: 'Vue.js · API REST — Dashboard d’administration centralisé pour les centres médicaux : rapports, gestion des patients et suivi des vaccinations.',
