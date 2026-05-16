@@ -330,7 +330,7 @@ export const faqs = [
   {
     question: 'Comment te contacter ?',
     answer:
-      'Par e-mail à konouluc0@gmail.com, via le formulaire de contact ou encore sur LinkedIn.',
+      'Par e-mail à konouluc0@gmail.com, via le formulaire de contact, sur LinkedIn ou sur GitHub.',
   },
 ]
 
@@ -339,6 +339,7 @@ export const contact = {
   phone: '+228 97 24 04 60',
   email: 'konouluc0@gmail.com',
   linkedin: 'https://www.linkedin.com/in/luc-komla-konou-23957833a/',
+  github: 'https://github.com/Konou0luc',
 }
 
 export const navLinks = [

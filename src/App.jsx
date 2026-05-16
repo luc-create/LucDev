@@ -386,6 +386,14 @@ function App() {
                   </a>
                 </p>
               </div>
+              <div>
+                <span className="contact-label">GitHub</span>
+                <p>
+                  <a href={contact.github} target="_blank" rel="noreferrer">
+                    @Konou0luc
+                  </a>
+                </p>
+              </div>
             </div>
 
             <form
@@ -431,6 +439,14 @@ function App() {
 
       <footer className="app-footer">
         <div className="footer-content">
+          <nav className="footer-links" aria-label="Réseaux sociaux">
+            <a href={contact.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href={contact.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </nav>
           <p>© {new Date().getFullYear()} Luc Konou — Tous droits réservés.</p>
         </div>
       </footer>
